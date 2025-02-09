@@ -1,0 +1,178 @@
+%% LyX 2.3.6 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[latin9]{inputenc}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+% \documentclass[preprint, amsmath,amssymb,aps]{revtex}
+\usepackage{subcaption}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{subcaption}
+\usepackage{bm}% bold math
+\usepackage{fullpage}% stretched textwidth
+%\usepackage{hyperref}% add hypertext capabilities
+%\usepackage[mathlines]{lineno}% Enable numbering of text and display math
+%\linenumbers\relax % Commence numbering lines
+
+%\usepackage[showframe,%Uncomment any one of the following lines to test 
+%%scale=0.7, marginratio={1:1, 2:3}, ignoreall,% default settings
+%%text={7in,10in},centering,
+%%margin=1.5in,
+%%total={6.5in,8.75in}, top=1.2in, left=0.9in, includefoot,
+%%height=10in,a5paper,hmargin={3cm,0.8in},
+%]{geometry}
+%\usepackage[T1]{fontenc}
+%\PassOptionsToPackage{normalem}{ulem}
+%\usepackage{ulem}
+\usepackage{babel}
+
+
+\providecommand{\nn}{\nonumber}
+
+%% Vector math shortcuts
+\providecommand{\nnabla}{\vec{ \nabla}}
+\providecommand{\pd}{\partial}
+\providecommand{\fot}{\frac{1}{2}}
+
+\providecommand{\bv}[1]{\bm{\mathrm{#1}}}
+\providecommand{\br}{\bv{r}}
+\providecommand{\w}{\omega}
+\providecommand{\W}{\Omega}
+\providecommand{\q}{\bv{q}}
+\providecommand{\Q}{\bv{Q}}
+\providecommand{\p}{\bv{p}}
+\providecommand{\P}{\bv{P}}
+\providecommand{\n}{\bv{n}}
+\providecommand{\E}{\bv E}
+\renewcommand{\r}{\bv{r}}
+\renewcommand{\k}{\bv{k}}
+\providecommand{\he}{\bv{\hat{\epsilon}}}
+\providecommand{\hp}{\hat{p}}
+\providecommand{\hq}{\hat{q}}
+\providecommand{\hk}{\hat{k}}
+\providecommand{\hz}{\hat{z}}
+
+\providecommand{\zb}{{\bar z}}
+\renewcommand{\b}[1]{\bar #1}
+\providecommand{\cc}{\mbox{c.c.}}
+
+%% Electron system shortcuts
+
+\providecommand{\ve}{\varepsilon}
+\providecommand{\ef}{\varepsilon_F}
+\providecommand{\vf}{v_F}
+\providecommand{\vfv}{\bv{\vf}}
+\providecommand{\kf}{k_F}
+\providecommand{\kfv}{\k_F}
+\providecommand{\pc}[1][ ]{\psi_{#1}^{\dagger}}
+\providecommand{\pa}[1][ ]{\psi_{#1}}
+\providecommand{\pck}{\pc[\k]}
+\providecommand{\pak}{\pa[\k]}
+\providecommand{\sw}{{\text sign}(\w_n)}
+
+% \renewcommand{\P}{\bv{P}}
+\newcommand{\e}{\eta}
+%\renewcommand{\P}{\bv{\e}}
+\renewcommand{\q}{\bv{q}}
+\newcommand{\bvs}{\bv{\sigma}}
+
+\providecommand{\tX}{\tilde{X}}
+\providecommand{\tS}{\tilde{\Sigma}}
+% \providecommand{\gb}{\overline{g}}
+\providecommand{\gb}{\bar{g}}
+\providecommand{\gpref}{\frac{\gb}{\tpp^3}}
+\providecommand{\tp}{2\pi}
+\providecommand{\tpp}{\left(2\pi\right)}
+\providecommand{\kE}[1][ ]{\epsilon_{#1}}
+\providecommand{\ek}{\kE[\k]}
+\providecommand{\Sg}{\Sigma}
+\providecommand{\Sgt}{\tilde{\Sg}}
+\providecommand{\sgn}{\mbox{sgn}}
+\providecommand{\Trc}{\mbox{Tr}}
+% {\mbox{sgn}}
+
+\newcommand{\spcr}{\qquad\qquad}
+% \providecommand{\as}[1]{A_{#1}}
+
+\newcommand{\vk}{\color{red}}
+\newcommand{\jr}{\color{blue}}
+\newcommand{\AK}[1]{\textcolor{magenta}{#1}}
+
+
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+% \title{Supplemental \\Theory of strain-induced magnetism in bulk STO}
+
+\title{PDE}
+%\maketitle
+
+
+
+%\author{Xi Wang}
+%\thanks{Equal contribution}
+%\affiliation{Department of Physics, Bar-Ilan University, 52900, Ramat Gan, Israel}
+%\author{Anirban Kundu}
+%\thanks{Equal contribution}
+%\affiliation{Physics Department, Ariel University, Ariel 40700, Israel}
+%\author{Bochao Xu}
+%\affiliation{Department of Physics, University of Connecticut, Storrs, Connecticut, USA}
+%\author{Ilya Sochnikov}
+%\affiliation{Department of Physics, University of Connecticut, Storrs, Connecticut, USA}
+%\affiliation{Institute of Materials Science, University of Connecticut, Storrs, Connecticut, USA}
+%\author{Damjan Pelc}
+%\affiliation{Department of Physics, Faculty of Science, University of Zagreb, Zagreb, HR-10000, Croatia}
+%\author{Martin Greven}
+%\affiliation{School of Physics and Astronomy, University of Minnesota, Minneapolis, MN, 55455, USA}
+%\author{Avraham Klein}
+%\thanks{Corresponding author}
+%\affiliation{Physics Department, Ariel University, Ariel 40700, Israel}
+%\author{Beena Kalisky}
+%\thanks{Corresponding author}
+%\affiliation{Department of Physics, Bar-Ilan University, 52900, Ramat Gan, Israel}
+%\affiliation{Institute of Nanotechnology \& Advanced Materials, Bar-Ilan University, 52900, Ramat Gan, Israel}
+
+%\maketitle
+
+%\date{\today}% It is always \today, today,
+%  but any date may be explicitly specified
+
+% \keywords{Suggested keywords}%Use showkeys class option if keyword
+% display desired
+
+%\tableofcontents
+
+%%###########   ALL SECTIONS ####################################
+%########################################################
+
+\include{method_heat_eqn_1d}
+% \include{method_2_byMe}
+% \include{method_3_heatequation_1d}
+% \include{method_4_heat_eqn_2d}
+%\include{method_5_vector_diff_eqn}
+%####################################################
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+%Write something
+% The \nocite command causes all entries in a bibliography to be printed out
+% whether or not they are actually referenced in the text. This is appropriate
+% for the sample file to show the different styles of references, but authors
+% most likely will not want to use it.
+%\nocite{*}
+
+{\footnotesize{} % \bibliography{bibtex-plastically-deformed-sto-vr1}
+\bibliographystyle{unsrt}
+\bibliography{bibtex-stoStrain}
+}{\footnotesize\par}
+
+\end{document}

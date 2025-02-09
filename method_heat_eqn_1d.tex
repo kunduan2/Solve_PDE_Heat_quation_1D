@@ -1,0 +1,116 @@
+\section{Introduction}
+The \textbf{heat equation} in one dimension (1D) is a partial differential equation (PDE) that describes how heat (or temperature) distributes over time in a given medium. It is given by:
+
+\begin{equation}
+\frac{\partial u}{\partial t} = \alpha \frac{\partial^2 u}{\partial x^2}
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $u(x,t)$ represents the temperature at position $x$ and time $t$.
+    \item $\alpha$ is the \textbf{thermal diffusivity} of the material, given by $\alpha = \frac{k}{\rho c}$, where $k$ is the thermal conductivity, $\rho$ is the density, and $c$ is the specific heat capacity.
+    \item $\frac{\partial u}{\partial t}$ represents the \textbf{rate of change of temperature} with respect to time.
+    \item $\frac{\partial^2 u}{\partial x^2}$ represents the \textbf{spatial curvature of the temperature distribution}, which determines how heat diffuses.
+\end{itemize}
+
+\section{Boundary and Initial Conditions}
+To solve the heat equation, we need boundary and initial conditions.
+
+\subsection{Initial Condition}
+Specifies the temperature distribution at $t = 0$:
+\begin{equation}
+    u(x, 0) = f(x)
+\end{equation}
+where $f(x)$ is a given function.
+
+\subsection{Boundary Conditions}
+Define how heat behaves at the boundaries. Common types include:
+
+\begin{itemize}
+    \item \textbf{Dirichlet condition}: Fixed temperature at boundaries,
+    \begin{equation}
+        u(0, t) = T_1, \quad u(L, t) = T_2.
+    \end{equation}
+    
+    \item \textbf{Neumann condition}: Specifies the heat flux (insulated or heat flow),
+    \begin{equation}
+        \frac{\partial u}{\partial x} \bigg|_{x=0} = q_1, \quad \frac{\partial u}{\partial x} \bigg|_{x=L} = q_2.
+    \end{equation}
+    
+    \item \textbf{Mixed condition}: A combination of Dirichlet and Neumann conditions.
+\end{itemize}
+
+\section{Solution Methods}
+There are several methods to solve the heat equation:
+\begin{itemize}
+    \item \textbf{Separation of Variables}: Used for simple cases with homogeneous boundary conditions.
+    \item \textbf{Fourier Series}: Expands the solution in sine or cosine series.
+    \item \textbf{Fourier Transform}: Used for problems on infinite domains.
+    \item \textbf{Numerical Methods}: Finite difference, finite element, and finite volume methods for complex geometries and varying properties.
+\end{itemize}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Numerical Algorithms}
+There are several numerical algorithms to solve the 1D heat equation.
+
+\subsection{Finite Difference Method (FDM)}
+The finite difference method discretizes the heat equation using numerical approximations for derivatives.
+
+\subsubsection{Explicit Method (FTCS)}
+Using a forward difference for time and a centered difference for space, the heat equation:
+\begin{equation}
+\frac{\partial u}{\partial t} = \alpha \frac{\partial^2 u}{\partial x^2}
+\end{equation}
+
+is discretized as:
+\begin{equation}
+    u_i^{n+1} = u_i^n + \lambda (u_{i+1}^n - 2u_i^n + u_{i-1}^n)
+\end{equation}
+
+where $\lambda = (\alpha \Delta t)/\Delta x^2$ is the stability parameter. The explicit method is conditionally stable if:
+\begin{equation}
+    \lambda \leq \frac{1}{2}
+\end{equation}
+
+\subsubsection{Implicit Method (BTCS)}
+Using a backward difference for time:
+\begin{equation}
+    u_i^{n+1} - \lambda (u_{i+1}^{n+1} - 2u_i^{n+1} + u_{i-1}^{n+1}) = u_i^n
+\end{equation}
+This leads to a system of linear equations that can be solved using matrix inversion. The implicit method is unconditionally stable.
+
+\subsubsection{Crank-Nicolson Method (CN)}
+A combination of explicit and implicit methods:
+\begin{equation}
+    u_i^{n+1} - \frac{\lambda}{2} (u_{i+1}^{n+1} - 2u_i^{n+1} + u_{i-1}^{n+1}) = u_i^n + \frac{\lambda}{2} (u_{i+1}^n - 2u_i^n + u_{i-1}^n)
+\end{equation}
+This method is unconditionally stable and second-order accurate.
+
+\subsection{Finite Element Method (FEM)}
+The finite element method divides the domain into elements and approximates $u(x,t)$ using basis functions.
+
+\subsection{Finite Volume Method (FVM)}
+The finite volume method applies the integral form of the heat equation to control volumes and approximates heat fluxes across volume boundaries.
+
+\section{Comparison of Methods}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        Method & Stability & Accuracy & Complexity & Application \\
+        \hline
+        Explicit (FTCS) & Conditional ($\lambda \leq 1/2$) & First-order & Simple & Fast, but unstable for large time steps \\
+        Implicit (BTCS) & Unconditional & First-order & Medium & More stable, requires solving a system \\
+        Crank-Nicolson & Unconditional & Second-order & High & Best accuracy, but computationally expensive \\
+        Finite Element & Unconditional & Second-order+ & High & Best for complex geometries \\
+        Finite Volume & Unconditional & Second-order+ & High & Best for conservation laws \\
+        \hline
+    \end{tabular}
+    \caption{Comparison of Numerical Methods}
+\end{table}
+
